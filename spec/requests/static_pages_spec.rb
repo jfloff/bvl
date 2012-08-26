@@ -4,23 +4,23 @@ require 'spec_helper'
 
 describe "Static pages" do
 
-  let(:base_title) { "Bolsa de Voluntários de Lisboa" }
+  let(:base_title) { "Banco de Voluntariado de Lisboa" }
 
   describe "Home page" do
 
     it "should have the h1 'BVL'" do
       visit '/static_pages/home'
-      page.should have_selector('h1', :text => 'BVL')
+      page.should have_selector('h1', :text => 'Banco de Voluntariado de Lisboa')
     end
 
     it "should have the base title" do
       visit '/static_pages/home'
-      page.should have_selector('title', :text => "Bolsa de Voluntários de Lisboa")
+      page.should have_selector('title', :text => "Banco de Voluntariado de Lisboa")
     end
 
     it "should not have a custom page title" do
       visit '/static_pages/home'
-      page.should have_selector('title', :text => "| Home")
+      page.should_not have_selector('title', :text => "| Home")
     end
   end
 

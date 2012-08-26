@@ -1,5 +1,9 @@
-<% provide(:title, 'Home') %>
-<h1>BVL</h1>
-<p>
-  Esta é a página inicial da <strong>Bolsa de Voluntários de Lisboa</strong>.
-</p>
+<div class="center hero-unit">
+  <h1> Bem-vindo ao </br> Banco de Voluntariado de Lisboa </h1>
+	</br>
+	<%= render 'video' %>
+	</br><br>
+  <%= render 'signups' %>
+</div>
+
+<%= link_to image_tag("bvl.jpg", alt: "BVL", id: "home-logo", class: "media-center img-polaroid"), '#' %>
