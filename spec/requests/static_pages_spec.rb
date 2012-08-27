@@ -1,65 +1,35 @@
-# encoding: UTF-8
-
 require 'spec_helper'
 
 describe "Static pages" do
 
-  let(:base_title) { "Banco de Voluntariado de Lisboa" }
+  subject { page }
 
   describe "Home page" do
+    before { visit root_path }
 
-    it "should have the h1 'BVL'" do
-      visit '/static_pages/home'
-      page.should have_selector('h1', :text => 'Banco de Voluntariado de Lisboa')
-    end
-
-    it "should have the base title" do
-      visit '/static_pages/home'
-      page.should have_selector('title', :text => "Banco de Voluntariado de Lisboa")
-    end
-
-    it "should not have a custom page title" do
-      visit '/static_pages/home'
-      page.should_not have_selector('title', :text => "| Home")
-    end
+    it { should have_selector('h1',    text: 'Banco de Voluntariado de Lisboa') }
+    it { should have_selector('title', text: full_title('')) }
+    it { should_not have_selector 'title', text: '| Home' }
   end
 
   describe "Help page" do
+    before { visit help_path }
 
-    it "should have the content 'Ajuda'" do
-      visit '/static_pages/help'
-      page.should have_content('Ajuda')
-    end
-
-    it "should have the title 'Ajuda'" do
-      visit '/static_pages/help'
-      page.should have_selector('title', :text => "#{base_title} | Ajuda")
-    end
+    it { should have_selector('h1',    text: 'Ajuda') }
+    it { should have_selector('title', text: full_title('Ajuda')) }
   end
 
   describe "About page" do
+    before { visit about_path }
 
-    it "should have the content 'Sobre'" do
-      visit '/static_pages/about'
-      page.should have_content('Sobre')
-    end
-
-    it "should have the title 'Sobre'" do
-      visit '/static_pages/about'
-      page.should have_selector('title', :text => "#{base_title} | Sobre")
-    end
+    it { should have_selector('h1',    text: 'Sobre') }
+    it { should have_selector('title', text: full_title('Sobre')) }
   end
 
   describe "Contact page" do
+    before { visit contact_path }
 
-    it "should have the content 'Contactos'" do
-      visit '/static_pages/contact'
-      page.should have_content('Contactos')
-    end
-
-    it "should have the title 'Contactos'" do
-      visit '/static_pages/contact'
-      page.should have_selector('title', :text => "#{base_title} | Contactos")
-    end
+    it { should have_selector('h1',    text: 'Contactos') }
+    it { should have_selector('title', text: full_title('Contactos')) }
   end
 end
