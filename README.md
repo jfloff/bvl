@@ -1,7 +1,7 @@
 Banco de Voluntariado de Lisboa
 ======
 
-The source code of HEROKU DEPLOYMENT
+The source code of http://cml-bvl.herokuapp.com/
 
 
 
