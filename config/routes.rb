@@ -1,7 +1,6 @@
 Bvl::Application.routes.draw do
   
   get "institutions/new"
-
   get "volunteers/new"
 
   #to be removed
