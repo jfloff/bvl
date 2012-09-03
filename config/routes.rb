@@ -2,7 +2,7 @@ Bvl::Application.routes.draw do
   
   get "institutions/new"
  
-  resources :volunteers, :path_names => { :new => 'signup' }
+  resources :volunteers, path_names: { new: 'signup' }
 
   #to be removed
   root to: 'static_pages#home'
