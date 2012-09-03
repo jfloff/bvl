@@ -11,7 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120902204515) do
+ActiveRecord::Schema.define(:version => 20120903232819) do
+
+  create_table "entities", :force => true do |t|
+    t.string   "username"
+    t.string   "name"
+    t.string   "email"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.string   "password_digest"
+  end
+
+  add_index "entities", ["email"], :name => "index_entities_on_email", :unique => true
+  add_index "entities", ["username"], :name => "index_entities_on_username", :unique => true
 
   create_table "volunteers", :force => true do |t|
     t.string   "username"

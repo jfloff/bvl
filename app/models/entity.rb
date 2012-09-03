@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: volunteers
+# Table name: entities
 #
 #  id              :integer          not null, primary key
 #  username        :string(255)
@@ -11,7 +11,7 @@
 #  password_digest :string(255)
 #
 
-class Volunteer < ActiveRecord::Base
+class Entity < ActiveRecord::Base
   attr_accessible :username, :name, :email, :password, :password_confirmation
 
   has_secure_password
