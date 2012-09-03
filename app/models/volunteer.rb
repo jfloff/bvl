@@ -18,7 +18,7 @@ class Volunteer < ActiveRecord::Base
   before_save :downcase_username_and_email
   
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  VALID_USERNAME_REGEX = /\A([a-z])+\z/i
+  VALID_USERNAME_REGEX = /\A([a-z0-9_])+\z/i
 
   validates :name, presence: true
   validates :username, presence: true, length: { maximum: 15 }, format: { with: VALID_USERNAME_REGEX }, 
@@ -33,4 +33,5 @@ class Volunteer < ActiveRecord::Base
 		self.email.downcase!
 		self.username.downcase!
 	end
+
 end

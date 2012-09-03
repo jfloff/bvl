@@ -101,7 +101,7 @@ describe Volunteer do
 
   describe "when username format is valid" do
     it "should be valid" do
-      usernames = %w[foobar] #1foobar2 foo_bar foo_bar_2 _1 f 1 _]
+      usernames = %w[foobar 1foobar2 foo_bar foo_bar_2 _1 f 1 _]
       usernames.each do |valid_username|
         @volunteer.username = valid_username
         @volunteer.should be_valid
