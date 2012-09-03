@@ -2,7 +2,7 @@ Bvl::Application.routes.draw do
   
   get "institutions/new"
  
-  resources :volunteers
+  resources :volunteers, :path_names => { :new => 'signup' }
 
   #to be removed
   root to: 'static_pages#home'
@@ -11,7 +11,6 @@ Bvl::Application.routes.draw do
   match '/about',   to: 'static_pages#about'
   match '/contact', to: 'static_pages#contact'
 
-  match '/volunteer-signup', to: 'volunteers#new', as: 'volunteer_signup'
   match '/institution-signup', to: 'institutions#new', as: 'institution_signup'
 
   # The priority is based upon order of creation:

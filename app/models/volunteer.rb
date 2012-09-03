@@ -28,6 +28,14 @@ class Volunteer < ActiveRecord::Base
   validates :password, presence: true, length: { minimum: 6 }
   validates :password_confirmation, presence: true
 
+  # Custom URLs
+  extend FriendlyId
+  FriendlyId.defaults do |config|
+    config.use :reserved
+    config.reserved_words = %w(new edit signup)
+  end
+  friendly_id :username
+
 
   def downcase_username_and_email
 		self.email.downcase!
