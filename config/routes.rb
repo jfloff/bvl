@@ -1,6 +1,6 @@
 Bvl::Application.routes.draw do
   
-  get "institutions/new"
+  get "entities/new"
  
   resources :volunteers, path_names: { new: 'signup' }
 
@@ -11,7 +11,7 @@ Bvl::Application.routes.draw do
   match '/about',   to: 'static_pages#about'
   match '/contact', to: 'static_pages#contact'
 
-  match '/institution-signup', to: 'institutions#new', as: 'institution_signup'
+  match '/entity-signup', to: 'entities#new', as: 'entity_signup'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

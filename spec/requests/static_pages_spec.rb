@@ -53,8 +53,11 @@ describe "Static pages" do
     click_link "Contact"
     page.should have_selector 'title', text: full_title('Contactos')
     click_link "Home"
+    click_link "Registo de Entidades"
+    page.should have_selector 'title', text: full_title('Registo de Entidades')
+    click_link "bvl"
     click_link "Registo de Voluntários"
     page.should have_selector 'title', text: full_title('Registo de Voluntários')
-    click_link "bvl"
+    visit root_path
   end
 end
