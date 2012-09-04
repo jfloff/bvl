@@ -1,0 +1,11 @@
+<% provide(:title, "#{@entity.name} (#{@entity.username})") %>
+<div class="row">
+  <aside class="span4">
+    <section>
+      <h1>
+				<%= gravatar_for @entity %>
+				<%= @entity.name %>
+			</h1>
+    </section>
+  </aside>
+</div>
