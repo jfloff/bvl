@@ -1,3 +1,5 @@
+#encoding: utf-8
+
 # == Schema Information
 #
 # Table name: volunteers
@@ -12,6 +14,7 @@
 #
 
 class Volunteer < ActiveRecord::Base
+
   attr_accessible :username, :name, :email, :password, :password_confirmation
 
   has_secure_password
@@ -20,6 +23,8 @@ class Volunteer < ActiveRecord::Base
   
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   VALID_USERNAME_REGEX = /\A([a-z0-9_])+\z/i
+
+  validate :check_sign_in
 
   validates :name, presence: true
   validates :username, presence: true, length: { maximum: 15 }, format: { with: VALID_USERNAME_REGEX }, 
@@ -42,5 +47,16 @@ class Volunteer < ActiveRecord::Base
 		self.email.downcase!
 		self.username.downcase!
 	end
+
+  def check_sign_in
+    entity = Entity.find_by_username(self.username)
+    unless entity.nil?
+      errors.add(:username, " já existe.")
+    end
+    entity = Entity.find_by_email(self.email)
+    unless entity.nil?
+      errors.add(:email, " já existe.")
+    end
+  end
 
 end

@@ -70,10 +70,23 @@ describe Volunteer do
     end
   end
 
-  describe "when email address is already taken" do
+  describe "when email address is already taken from a volunteer" do
     before do
       volunteer_with_same_email = @volunteer.dup
       volunteer_with_same_email.email = @volunteer.email.upcase
+      volunteer_with_same_email.save
+    end
+
+    it { should_not be_valid }
+  end
+
+  describe "when email address is already taken from a entity" do
+    let(:entity) { FactoryGirl.create(:entity) }
+    
+    before do
+      @volunteer.email = entity.email
+      @volunteer.save
+      volunteer_with_same_email = @volunteer.dup
       volunteer_with_same_email.save
     end
 
@@ -114,6 +127,19 @@ describe Volunteer do
     before do
       volunteer_with_same_username = @volunteer.dup
       volunteer_with_same_username.username = @volunteer.username.upcase
+      volunteer_with_same_username.save
+    end
+
+    it { should_not be_valid }
+  end
+
+  describe "when username is already taken from a entity" do
+    let(:entity) { FactoryGirl.create(:entity) }
+    
+    before do
+      @volunteer.username = entity.username
+      @volunteer.save
+      volunteer_with_same_username = @volunteer.dup
       volunteer_with_same_username.save
     end
 
