@@ -60,6 +60,7 @@ describe "Volunteer pages" do
 
         it { should have_selector('title', text: volunteer.name) }
         it { should have_selector('div.alert.alert-success', text: 'Bem-vindo') }
+        it { should have_link('Sign out') }
       end
     end
   end

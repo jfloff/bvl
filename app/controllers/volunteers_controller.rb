@@ -11,6 +11,7 @@ class VolunteersController < ApplicationController
   def create
     @volunteer = Volunteer.new(params[:volunteer])
     if @volunteer.save
+      sign_in @volunteer
     	flash[:success] = "Bem-vindo ao Banco de Voluntariado de Lisboa!"
       redirect_to @volunteer
     else
