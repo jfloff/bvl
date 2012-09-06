@@ -6,7 +6,9 @@ class SessionsController < ApplicationController
   end
 
   def create
-    volunteer = Volunteer.find_by_email(params[:session][:email].downcase)
+    email_username = params[:session][:email_username].downcase
+    volunteer = Volunteer.find_by_email(email_username)
+    volunteer ||= Volunteer.find_by_username(email_username)
     if volunteer && volunteer.authenticate(params[:session][:password])
       sign_in volunteer
       redirect_to volunteer
