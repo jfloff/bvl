@@ -20,6 +20,7 @@ class Volunteer < ActiveRecord::Base
   has_secure_password
 
   before_save :downcase_username_and_email
+  before_save :create_remember_token
   
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   VALID_USERNAME_REGEX = /\A([a-z0-9_])+\z/i
@@ -59,4 +60,9 @@ class Volunteer < ActiveRecord::Base
     end
   end
 
+  private
+
+    def create_remember_token
+      self.remember_token = SecureRandom.urlsafe_base64
+    end
 end
