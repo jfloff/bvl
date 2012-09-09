@@ -11,6 +11,7 @@ class EntitiesController < ApplicationController
   def create
     @entity = Entity.new(params[:entity])
     if @entity.save
+      sign_in @entity
     	flash[:success] = "Bem-vindo ao Banco de Voluntariado de Lisboa!"
       redirect_to @entity
     else

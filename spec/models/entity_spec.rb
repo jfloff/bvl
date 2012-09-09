@@ -26,6 +26,7 @@ describe Entity do
   it { should respond_to(:password) }
   it { should respond_to(:password_confirmation) }
   it { should respond_to(:authenticate) }
+  it { should respond_to(:remember_token) }
 
   it { should be_valid }
 
@@ -190,5 +191,10 @@ describe Entity do
       it { should_not == entity_for_invalid_password }
       specify { entity_for_invalid_password.should be_false }
     end
+  end
+
+  describe "remember token" do
+    before { @entity.save }
+    its(:remember_token) { should_not be_blank }
   end
 end
